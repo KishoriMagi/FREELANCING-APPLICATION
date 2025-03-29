@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Freelancer Dashboard</h2>
+        <button onclick="showSection('profile')">Create Profile</button>
+        <button onclick="showSection('jobs')">Search Jobs</button>
+        <button onclick="showSection('chat')">Chat</button>
+
+        <div id="profile" class="section" style="display:none;">
+            <h3>Create Your Profile</h3>
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="text" id="email" placeholder="Email">
+            <input type="text" id="skills" placeholder="Skills (e.g., Web Development, Design)">
+            <input type="text" id="experience" placeholder="Years of Experience">
+            <select id="availability">
+                <option value="Full-Time">Full-Time</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Freelance">Freelance</option>
+            </select>
+            <textarea id="bio" placeholder="Brief Bio"></textarea>
+            <button onclick="saveProfile()">Save Profile</button>
+            <p id="profileMessage"></p>
+        </div>
+
+        <div id="jobs" class="section" style="display:none;">
+            <h3>Available Jobs</h3>
+            <input type="text" id="jobSearch" placeholder="Search Jobs" onkeyup="filterJobs()">
+            <ul id="jobList">
+                <li>Web Development</li>
+                <li>Graphic Design</li>
+                <li>Content Writing</li>
+            </ul>
+        </div>
+
+        <div id="chat" class="section" style="display:none;">
+            <h3>Chatbox</h3>
+            <input type="text" id="chatMessage" placeholder="Type a message">
+            <button onclick="sendMessage()">Send</button>
+            <div id="chatHistory"></div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+        }
+
+        function saveProfile() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let skills = document.getElementById("skills").value;
+            let experience = document.getElementById("experience").value;
+            let availability = document.getElementById("availability").value;
+            let bio = document.getElementById("bio").value;
+
+            if (name && email && skills && experience && bio) {
+                document.getElementById("profileMessage").innerText = "Profile saved successfully!";
+            } else {
+                document.getElementById("profileMessage").innerText = "Please fill all details!";
+            }
+        }
+    </script>
+</body>
+</html>

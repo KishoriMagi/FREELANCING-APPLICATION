@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Client Dashboard</h2>
+        <button onclick="showSection('postJob')">Post a Job</button>
+        <button onclick="showSection('proposals')">View Proposals</button>
+        <button onclick="showSection('chat')">Chat</button>
+
+        <div id="postJob" class="section" style="display:none;">
+            <h3>Post a Job</h3>
+            <input type="text" id="jobTitle" placeholder="Job Title">
+            <input type="text" id="company" placeholder="Company Name">
+            <input type="text" id="salary" placeholder="Salary (Optional)">
+            <select id="jobType">
+                <option value="Full-Time">Full-Time</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Freelance">Freelance</option>
+            </select>
+            <textarea id="jobDesc" placeholder="Job Description"></textarea>
+            <button onclick="postJob()">Post Job</button>
+            <p id="jobMessage"></p>
+        </div>
+
+        <div id="proposals" class="section" style="display:none;">
+            <h3>Received Proposals</h3>
+            <ul id="proposalList">
+                <li>John Doe: Web Development</li>
+                <li>Jane Smith: Graphic Design</li>
+            </ul>
+        </div>
+
+        <div id="chat" class="section" style="display:none;">
+            <h3>Chatbox</h3>
+            <input type="text" id="chatMessage" placeholder="Type a message">
+            <button onclick="sendMessage()">Send</button>
+            <div id="chatHistory"></div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+        }
+
+        function postJob() {
+            let jobTitle = document.getElementById("jobTitle").value;
+            let company = document.getElementById("company").value;
+            let salary = document.getElementById("salary").value;
+            let jobType = document.getElementById("jobType").value;
+            let jobDesc = document.getElementById("jobDesc").value;
+
+            if (jobTitle && company && jobDesc) {
+                document.getElementById("jobMessage").innerText = "Job posted successfully!";
+            } else {
+                document.getElementById("jobMessage").innerText = "Please fill all required details!";
+            }
+        }
+    </script>
+</body>
+</html>

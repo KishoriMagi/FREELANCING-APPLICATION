@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancing Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Freelancing Platform</h1>
+        <p>Are you a Client or a Freelancer?</p>
+        <button onclick="redirectTo('client')">I'm a Client</button>
+        <button onclick="redirectTo('freelancer')">I'm a Freelancer</button>
+    </div>
+
+    <script>
+        function redirectTo(userType) {
+            if (userType === 'client') {
+                window.location.href = "client_dashboard.html";
+            } else {
+                window.location.href = "freelancer_dashboard.html";
+            }
+        }
+    </script>
+</body>
+</html>
